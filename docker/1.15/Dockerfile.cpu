@@ -42,9 +42,9 @@ RUN curl https://tensorflow-aws.s3-us-west-2.amazonaws.com/MKL-Libraries-0.20-rc
 
 ENV LD_LIBRARY_PATH '/usr/local/lib:$LD_LIBRARY_PATH'
 
-RUN curl https://tensorflow-aws.s3-us-west-2.amazonaws.com/1.14/Serving/CPU-WITH-MKL/tensorflow_model_server -o tensorflow_model_server && \
-chmod 555 tensorflow_model_server && cp tensorflow_model_server /usr/bin/tensorflow_model_server && \
-rm -f tensorflow_model_server
+#RUN curl https://tensorflow-aws.s3-us-west-2.amazonaws.com/1.14/Serving/CPU-WITH-MKL/tensorflow_model_server -o tensorflow_model_server && \
+#chmod 555 tensorflow_model_server && cp tensorflow_model_server /usr/bin/tensorflow_model_server && \
+#rm -f tensorflow_model_server
 
 RUN ${PIP} install -U --no-cache-dir awscli==1.16.196
 
@@ -54,6 +54,10 @@ EXPOSE 8500
 
 # REST
 EXPOSE 8501
+
+COPY tensorflow_model_server /tmp/Serving/CPU-WITH-MKL/tensorflow_model_server && \
+chmod 555 tensorflow_model_server && cp tensorflow_model_server /usr/bin/tensorflow_model_server && \ 
+rm -f tensorflow_model_server
 
 # Set where models should be stored in the container
 ENV MODEL_BASE_PATH=/models
