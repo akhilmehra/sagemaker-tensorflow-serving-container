@@ -50,14 +50,14 @@ RUN apt-get update \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-# The 'apt-get install' of nvinfer-runtime-trt-repo-ubuntu1604-4.0.1-ga-cuda10.0
+# The 'apt-get install' of nvinfer-runtime-trt-repo-ubuntu1804-4.0.1-ga-cuda10.0
 # adds a new list which contains libnvinfer library, so it needs another
 # 'apt-get update' to retrieve that list before it can actually install the
 # library.
 # We don't install libnvinfer-dev since we don't need to build against TensorRT,
 # and libnvinfer4 doesn't contain libnvinfer.a static library.
 RUN apt-get update \
- && apt-get install -y --no-install-recommends nvinfer-runtime-trt-repo-ubuntu1604-${TF_TENSORRT_VERSION}-ga-cuda10.0 \
+ && apt-get install -y --no-install-recommends nvinfer-runtime-trt-repo-ubuntu1804-${TF_TENSORRT_VERSION}-ga-cuda10.0 \
  && apt-get update \
  && apt-get install -y --no-install-recommends libnvinfer5=${TF_TENSORRT_VERSION}-1+cuda10.0 \
  && apt-get clean \
