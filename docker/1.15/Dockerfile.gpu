@@ -27,10 +27,7 @@ ENV PATH="$PATH:/sagemaker"
 ENV MODEL_BASE_PATH=/models
 # The only required piece is the model name in order to differentiate endpoints
 ENV MODEL_NAME=model
-<<<<<<< HEAD
-#Fix for the interactive mode during an install in step 21
-=======
->>>>>>> 335353459b8b0dc3b087d753f616712873121e4d
+# Fix for the interactive mode during an install in step 21
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
