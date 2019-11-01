@@ -19,6 +19,7 @@ ENV LD_LIBRARY_PATH='/usr/local/lib:$LD_LIBRARY_PATH'
 ENV MODEL_BASE_PATH=/models
 # The only required piece is the model name in order to differentiate endpoints
 ENV MODEL_NAME=model
+ENV DEBIAN_FRONTEND=noninteractive
 
 # nginx + njs
 RUN apt-get update \
